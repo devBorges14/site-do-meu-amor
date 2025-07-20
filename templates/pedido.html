@@ -1,14 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💕U want to be my Gf?❤️</title>
+    <title>💕 Quer namorar comigo? ❤️</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to right, #ffe4ec, #ffc0cb);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        .botao-pedido {
+            margin-top: 40px;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            margin: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        #nao {
+            position: relative;
+        }
+
+        .erro-msg {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: #444;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <a>Pedido</a>
-    <h1>ACEITA?</h1>
-    <button>SIM</button>
-    <button>Não😭</button>
+
+    <a href="/">← Voltar para Início</a>
+    <h1>Você aceita namorar comigo? 💘</h1>
+
+    <h2>✨ Vantagens de namorar comigo ✨</h2>
+
+    <p>
+        <strong>💻 Inteligente e esforçado:</strong> Estudo programação, quero trabalhar cedo e montar um portfólio — foco total no futuro!<br><br>
+
+        <strong>💖 Carinhoso e romântico:</strong> Estou criando esse site só pra te pedir em namoro. Se isso não for amor, não sei o que é!<br><br>
+
+        <strong>😂 Divertido e sincero:</strong> Sei rir, brincar, pedir desculpa, e ainda programar umas páginas fofas pra gente.<br><br>
+
+        <strong>🤝 Respeitador e atento:</strong> Me importo com o que você sente e sempre quero aprender a ser melhor.<br><br>
+
+        <strong>🌍 Sonhador com os pés no chão:</strong> Tenho planos, metas e tô correndo atrás de cada uma.<br><br>
+
+        <strong>🙏 Família e valores:</strong> Tenho princípios, rotina, e acredito em amor que constrói juntos.
+    </p>
+
+    <div class="botao-pedido">
+        <form action="/pedido" method="post">
+            <button type="submit" name="sim" value="1">SIM 💖</button>
+            <button type="submit" name="nao" value="1" id="nao">Não 😭</button>
+        </form>
+    </div>
+
+    {% if erro %}
+        <p class="erro-msg">{{ erro }}</p>
+    {% endif %}
+
+    <script>
+        const botaoNao = document.getElementById('nao');
+
+        // Movimento engraçado para evitar o clique no botão "Não"
+        botaoNao.addEventListener('mouseover', () => {
+            const x = Math.floor(Math.random() * 300) - 150;
+            const y = Math.floor(Math.random() * 300) - 150;
+            botaoNao.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
 </body>
 </html>

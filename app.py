@@ -7,14 +7,20 @@ app = Flask(__name__)
 def homepage():
     return render_template("index.html")
 
-# tela do pedido
-@app.route("/pedido")
-def PEDIDOpage():
-    return render_template("pedido.html")
+@app.route("/pedido", methods=["GET", "POST"])
+def pedido():
+    if request.method == "POST":
+        if "sim" in request.form:
+            return redirect(url_for("aceito"))  # Rota que mostra o pedido aceito
+        elif "nao" in request.form:
+            return render_template("pedido.html", erro="Não vale dizer não 😢 Tenta de novo...")
+
+    return render_template("pedido.html", erro=None)
+
 
 # tela aceito
 @app.route("/aceito")
-def ACEITOpage():
+def aceito():
     return render_template("aceito.html")
 
 if __name__ == '__main__':
